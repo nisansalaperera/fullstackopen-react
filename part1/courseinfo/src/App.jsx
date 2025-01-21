@@ -1,67 +1,72 @@
 const Header = (props) => {
-  console.log(props)
+  console.log(props);
   return (
     <div>
       <h1>{props.course}</h1>
     </div>
-  )
-}
+  );
+};
 
 const Content = (props) => {
-  console.log("content-",props)
+  console.log("content-", props.parts);
   return (
     <div>
       <p>Contents</p>
-      <Part  part={props.part1} />
-      <Part  part={props.part2}  />
-      <Part  part={props.part3}  />
+      <Part part={props.parts[0]} />
+      <Part part={props.parts[1]} />
+      <Part part={props.parts[2]} />
     </div>
-  )
-}
+  );
+};
 
 const Total = (props) => {
+  const parts = props.parts;
+  let totex = 0;
+
+  parts.forEach((part) => {
+    totex = totex + part.exercises;
+  });
+
   return (
     <div>
-      <p>Number of exercises {props.total}</p>
+      <p>Number of exercises {totex}</p>
     </div>
-  )
-}
+  );
+};
 
-const Part = (props) =>{
-  console.log("part",props)
+const Part = (props) => {
+  console.log("part", props);
   return (
     <div>
-        <p>{props.part.name} {props.part.exercises}</p>
+      <p>{props.part.name} {props.part.exercises}</p>
     </div>
-  )
-
-}
+  );
+};
 
 const App = () => {
-  const course = 'Half Stack application development'
+  const course = "Half Stack application development";
   const parts = [
     {
-      name: 'Fundamentals of React',
-      exercises: 10
+      name: "Fundamentals of React",
+      exercises: 10,
     },
     {
-      name: 'Using props to pass data',
-      exercises: 7
+      name: "Using props to pass data",
+      exercises: 7,
     },
     {
-      name: 'State of a component',
-      exercises: 14
-    }
-  ]
+      name: "State of a component",
+      exercises: 14,
+    },
+  ];
 
   return (
     <div>
-      <Header course={course}/>
-      <Content part1={parts[0]} part2={parts[1] } part3={parts[2] }/>
-      <Total total={parts[0].exercises + parts[1].exercises + parts[2].exercises}/>
+      <Header course={course} />
+      <Content parts={parts} />
+      <Total parts={parts} />
     </div>
+  );
+};
 
-  )
-}
-
-export default App
+export default App;
