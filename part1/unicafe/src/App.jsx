@@ -9,12 +9,24 @@ const Heading = () => {
 };
 
 const Statistics = (props) => {
+
+  const good = props.good
+  const bad  = props.bad
+  const neutral = props.neutral
+
+  const all = good+bad+neutral
+  const average = all/3
+  const positive = (good/all)*100
+
   return (
     <div>
       <h1>statistics</h1>
-      <div>good : {props.good}</div>
-      <div>neutral :{props.neutral}</div>
-      <div>bad :{props.bad}</div>
+      <div>good : {good}</div>
+      <div>neutral :{neutral}</div>
+      <div>bad :{bad}</div>
+      <div>all :{all}</div>
+      <div>average :{average}</div>
+      <div>poitive :{positive} %</div>
     </div>
    
 
@@ -40,6 +52,7 @@ const App = () => {
     setNeutral(neutral + 1 );
 
   const handleBadClick = () => setBad(bad + 1 );
+
 
   return (
     <div>
