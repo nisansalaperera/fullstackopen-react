@@ -76,6 +76,7 @@ const App = () => {
   const handleBadClick = () => setBad(bad + 1 );
 
 
+  
   return (
     <div>
       <Heading />
